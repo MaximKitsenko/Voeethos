@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxKitsenko.Voeethos", "Max
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxKitsenko.Voeethos.Tests", "MaxKitsenko.Voeethos.Tests\MaxKitsenko.Voeethos.Tests.csproj", "{0A01346A-86EB-47EF-B99F-5845CBC04D68}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MaxKitsenko.Voeethos.Console", "MaxKitsenko.Voeethos.Console\MaxKitsenko.Voeethos.Console.csproj", "{BAB53B15-0281-42B9-B73E-EE1D1BDC8EDA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{0A01346A-86EB-47EF-B99F-5845CBC04D68}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A01346A-86EB-47EF-B99F-5845CBC04D68}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A01346A-86EB-47EF-B99F-5845CBC04D68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BAB53B15-0281-42B9-B73E-EE1D1BDC8EDA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BAB53B15-0281-42B9-B73E-EE1D1BDC8EDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BAB53B15-0281-42B9-B73E-EE1D1BDC8EDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BAB53B15-0281-42B9-B73E-EE1D1BDC8EDA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
