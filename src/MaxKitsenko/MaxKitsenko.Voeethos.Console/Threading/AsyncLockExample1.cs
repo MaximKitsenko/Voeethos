@@ -13,8 +13,39 @@ namespace MaxKitsenko.Voeethos.Console.Threading
 
 		public static void StartAsyncLockExample()
 		{
-			var t = SomeClassWithAsyncMethods.BulkTasksMethodAsyn();
-			t.Wait();
+			System.Console.ForegroundColor = ConsoleColor.Yellow;
+			System.Console.WriteLine( "******************************************" );
+			System.Console.WriteLine( "******************************************" );
+			System.Console.WriteLine( "**                                      **" );
+			System.Console.WriteLine( "** SomeMethodWithoutSyncronisationAsync **" );
+			System.Console.WriteLine( "**                                      **" );
+			System.Console.WriteLine( "******************************************" );
+			System.Console.WriteLine( "******************************************" );
+			System.Console.ResetColor();
+			SomeClassWithAsyncMethods.BulkTasksMethodAsyn( () => SomeClassWithAsyncMethods.SomeMethodWithoutSyncronisationAsync( "i" ) ).Wait();
+
+			System.Console.ForegroundColor = ConsoleColor.Yellow;
+			System.Console.WriteLine( "***************************************" );
+			System.Console.WriteLine( "***************************************" );
+			System.Console.WriteLine( "**                                   **" );
+			System.Console.WriteLine( "** SomeMethodMonitorSyncronisedAsync **" );
+			System.Console.WriteLine( "**                                   **" );
+			System.Console.WriteLine( "***************************************" );
+			System.Console.WriteLine( "***************************************" );
+			System.Console.ResetColor();
+			SomeClassWithAsyncMethods.BulkTasksMethodAsyn( () => SomeClassWithAsyncMethods.SomeMethodMonitorSyncronisedAsync( "i" ) ).Wait();
+
+			System.Console.ForegroundColor = ConsoleColor.Yellow;
+			System.Console.WriteLine( "*****************************************" );
+			System.Console.WriteLine( "*****************************************" );
+			System.Console.WriteLine( "**                                     **" );
+			System.Console.WriteLine( "** SomeMethodAsyncLockSyncronisedAsync **" );
+			System.Console.WriteLine( "**                                     **" );
+			System.Console.WriteLine( "*****************************************" );
+			System.Console.WriteLine( "*****************************************" );
+			System.Console.ResetColor();
+			SomeClassWithAsyncMethods.BulkTasksMethodAsyn( () => SomeClassWithAsyncMethods.SomeMethodAsyncLockSyncronisedAsync( "i" ) ).Wait();
+
 			System.Console.WriteLine( "Press any key" );
 			System.Console.ReadLine();
 		}
@@ -23,12 +54,12 @@ namespace MaxKitsenko.Voeethos.Console.Threading
 		{
 			private static readonly Dictionary< string, string > _locks = new Dictionary< string, string >();
 
-			public static async Task BulkTasksMethodAsyn()
+			public static async Task BulkTasksMethodAsyn( Func< Task > getTask )
 			{
 				var tasksList = new List< Task >();
 				for( var i = 0; i < 1000; i++ )
 				{
-					tasksList.Add( SomeMethodAsyncLockSyncronisedAsync( "i" ) );
+					tasksList.Add( getTask() );
 				}
 				await Task.WhenAll( tasksList );
 			}
