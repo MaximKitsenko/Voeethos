@@ -9,7 +9,7 @@ namespace MaxKitsenko.Voeethos.Console.Threading
 {
 	public class AsyncLockExample1
 	{
-		private static readonly ConcurrentDictionary< string, AsyncLock > concurentLocks = new ConcurrentDictionary< string, AsyncLock >();
+		private static readonly ConcurrentDictionary< string, AsyncLock > _concurentLocks = new ConcurrentDictionary< string, AsyncLock >();
 
 		public static void StartAsyncLockExample()
 		{
@@ -36,8 +36,8 @@ namespace MaxKitsenko.Voeethos.Console.Threading
 			public static async Task SomeMethodAsyncLockSyncronisedAsync( string mark )
 			{
 				AsyncLock lockObj;
-				if( !concurentLocks.TryGetValue( mark, out lockObj ) )
-					lockObj = concurentLocks[ mark ] = new AsyncLock();
+				if( !_concurentLocks.TryGetValue( mark, out lockObj ) )
+					lockObj = _concurentLocks[ mark ] = new AsyncLock();
 				using( var releaser = await lockObj.LockAsync() )
 				{
 					try
